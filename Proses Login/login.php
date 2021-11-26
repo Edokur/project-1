@@ -29,7 +29,7 @@
             <h3 class="title-text">Log In to continue</h3>
             <p class="caption-text">Please log in using that account has<br>
                 registered on the website.</p>
-            <form style="margin-top: 1.5rem;" action="" method="post">
+            <form style="margin-top: 1.5rem;" action="check_login.php" method="post">
                 <div style="margin-bottom: 1.75rem;">
                 <label for="exampleInputEmail1" class="d-block input-label">Email Address</label>
                 <div class="d-flex w-100 div-input">
