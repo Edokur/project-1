@@ -11,7 +11,7 @@
     <body>
         <div class="container">
             <form action="check_register.php" method="post">
-            <h2>Tambah User</h2>
+                <h2>Tambah User</h2>
                 <table>
                     <tr><td>Username</td><td> : <input name='username_user' type='text'></td></tr>
                     <tr><td>Password</td><td> : <input name='password_user' type='password'></td></tr>
