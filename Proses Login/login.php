@@ -70,7 +70,7 @@
                 <button class="btn btn-fill text-white d-block w-100" type="submit">Log In</button>
             </form>
             <p class="text-center bottom-caption">Don't have an account yet?
-                <span class="green-bottom-caption">Register Here</span>
+                <span class="green-bottom-caption"><a href="../registration.php">Register Here</a></span>
             </p>
             </div>
         </div>
