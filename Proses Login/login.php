@@ -67,7 +67,7 @@
                 <div class="d-flex justify-content-end" style="margin-top: 0.75rem;">
                 <a href="#" class="forgot-password fst-italic">Forgot Password?</a>
                 </div>
-                <button class="btn btn-fill text-white d-block w-100" type="submit">Log In To My Account</button>
+                <button class="btn btn-fill text-white d-block w-100" type="submit">Log In</button>
             </form>
             <p class="text-center bottom-caption">Don't have an account yet?
                 <span class="green-bottom-caption">Register Here</span>
