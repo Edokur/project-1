@@ -8,11 +8,15 @@ $ketemu=mysqli_num_rows($login);
 $r= mysqli_fetch_array($login);
 
 if ($ketemu > 0){
-    header("Location : ../dashboard.php");
+    session_start();
+    $_SESSION['emailUser'] = $r['email_user'];
+    $_SESSION['passUser'] = $r['password_user'];
+    echo"USER BERHASIL LOGIN<br>";
+    header("location:../dashboard.php");
 }
 else{
     echo "<center>Login gagal! username & password tidak benar<br>";
-    echo "<a href=login.php><b>ULANGILAGI</b></a></center>";
+    echo "<a href=index.php><b>ULANGILAGI</b></a></center>";
 }
 mysqli_close($con);
 ?>
