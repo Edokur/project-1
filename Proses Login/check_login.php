@@ -9,8 +9,8 @@ $r= mysqli_fetch_array($login);
 
 if ($ketemu > 0){
     session_start();
-    $_SESSION['emailUser'] = $r['email_user'];
-    $_SESSION['passUser'] = $r['password_user'];
+    $_SESSION['emailUser'] = $emailUser;
+    $_SESSION['status'] = "login";
     echo"USER BERHASIL LOGIN<br>";
     header("location:../dashboard.php");
 }
