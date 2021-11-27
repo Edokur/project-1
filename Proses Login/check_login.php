@@ -21,4 +21,12 @@ if (isset($_POST['submit'])) {
     }
     mysqli_close($con);
 }
+<<<<<<< HEAD
+=======
+else{
+    echo "<center>Login gagal! username & password tidak benar<br>";
+    echo "<a href=login.php><b>ULANGILAGI</b></a></center>";
+}
+mysqli_close($con);
+>>>>>>> fd64a381e7ac883981f73ac77d22fae041abe9d7
 ?>

@@ -67,7 +67,7 @@
                     <label for="captcha_code" class="d-block input-label">Captcha</label>
                     <div class="d-flex w-100 div-input">
                         <img src="captcha.php" />
-                        <input type="text" class="input-field" name="captcha_code" id="captcha_code"/>
+                        <input type="text" class="input-field" name="captcha_code" id="captcha_code" required/>
                     </div>
                 </div>
                 </div>
@@ -84,17 +84,6 @@
 
 
         </div>
-                <!-- <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email_user" class="form-control" id="exampleInputEmail1" name="email_user" />
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password_user" class="form-control" id="exampleInputPassword1" name="password_user"/>
-                </div> -->
-
-                <!-- <button type="submit" class="btn btn-primary">Login</button> -->
-            </form>
         </div>
     </section>
         <!-- Option 1: Bootstrap Bundle with Popper -->
