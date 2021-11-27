@@ -12,17 +12,6 @@
     <body>
         <section class="h-100 w-100" style="box-sizing: border-box; background-color: #232130">
             <form action="check_register.php" method="post">
-<<<<<<< HEAD
-                <h2>Tambah User</h2>
-                <table>
-                    <tr><td>Username</td><td> : <input name='username_user' type='text'></td></tr>
-                    <tr><td>Nama Lengkap</td><td> : <input name='nama_user' type='text'></td></tr>
-                    <tr><td>Email </td><td> : <input name='email_user' type='text'></td></tr>
-                    <tr><td>Password</td><td> : <input name='password_user' type='password'></td></tr>
-                    <!-- <tr><td>Captcha</td><img src="captcha.php" /><input type="text" class="form-control" name="captcha_code"/></tr> -->
-                </table>
-                <button type="submit" class="btn btn-primary">Login</button>
-=======
                 <div class="content-3-6 d-flex flex-column align-items-center h-100 flex-lg-row"
         style="font-family: 'Poppins', sans-serif;">
         <div class="position-relative d-none d-lg-block h-100 width-left">
@@ -132,7 +121,6 @@
                 <a href="#" class="forgot-password fst-italic">Forgot Password?</a>
                 </div>
                 <input type="submit" value="Register" class="btn btn-fill text-white d-block w-100">
->>>>>>> fd64a381e7ac883981f73ac77d22fae041abe9d7
             </form>
             <p class="text-center bottom-caption">Do You have account ?
                 <span class="green-bottom-caption"><a href="Proses Login/login.php" >Login Here</a></span>
