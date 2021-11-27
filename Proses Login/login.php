@@ -63,6 +63,13 @@
                     </svg>
                     </div>
                 </div>
+                <div style="margin-top: 1rem;">
+                    <label for="captcha_code" class="d-block input-label">Captcha</label>
+                    <div class="d-flex w-100 div-input">
+                        <img src="captcha.php" />
+                        <input type="text" class="input-field" name="captcha_code" id="captcha_code"/>
+                    </div>
+                </div>
                 </div>
                 <div class="d-flex justify-content-end" style="margin-top: 0.75rem;">
                 <a href="#" class="forgot-password fst-italic">Forgot Password?</a>
@@ -84,11 +91,6 @@
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
                     <input type="password_user" class="form-control" id="exampleInputPassword1" name="password_user"/>
-                </div> -->
-                <!-- <div class="mb-3">
-                    <label for="captcha" class="form-label">Captcha</label>
-                    <img src="captcha.php" />
-                    <input type="text" class="form-control" name="captcha_code"/>
                 </div> -->
 
                 <!-- <button type="submit" class="btn btn-primary">Login</button> -->
