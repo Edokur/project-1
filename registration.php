@@ -14,9 +14,9 @@
                 <h2>Tambah User</h2>
                 <table>
                     <tr><td>Username</td><td> : <input name='username_user' type='text'></td></tr>
-                    <tr><td>Password</td><td> : <input name='password_user' type='password'></td></tr>
                     <tr><td>Nama Lengkap</td><td> : <input name='nama_user' type='text'></td></tr>
                     <tr><td>Email </td><td> : <input name='email_user' type='text'></td></tr>
+                    <tr><td>Password</td><td> : <input name='password_user' type='password'></td></tr>
                     <!-- <tr><td>Captcha</td><img src="captcha.php" /><input type="text" class="form-control" name="captcha_code"/></tr> -->
                 </table>
                 <button type="submit" class="btn btn-primary">Login</button>
