@@ -4,10 +4,11 @@ include "connection_database.php";
 $emailUser = $_POST['email_user'];
 $passwordUser = md5($_POST['password_user']);
 $captcha = md5($_POST['captcha_code']);
-$sql="SELECT * FROM users WHERE email='$emailUser' AND password='$passwordUser'";
-$sql2="UPDATE users SET captcha ='$captcha' where email ='$emailUser'";
-
     if ($_POST["captcha_code"] == $_SESSION["captcha_code"]){
+        
+        $sql="SELECT * FROM users WHERE email='$emailUser' AND password='$passwordUser'";
+        $sql2="UPDATE users SET captcha ='$captcha' where email ='$emailUser'";
+
         $update=mysqli_query($con, $sql2);
         $login=mysqli_query($con,$sql);
         $ketemu=mysqli_num_rows($login);
@@ -25,5 +26,13 @@ $sql2="UPDATE users SET captcha ='$captcha' where email ='$emailUser'";
             echo "<a href=login.php><b>ULANGILAGI</b></a></center>";
         }
         mysqli_close($con);
+    }
+    else
+    {
+        echo "<script>
+        alert('Kode Captcha tidak sesuai silahkan masukan kode yang sesuai');
+        window.location.href = 'login.php';
+        </script>";
+        // header("location: login.php");
     }
 ?>
