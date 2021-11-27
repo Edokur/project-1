@@ -16,7 +16,7 @@ if ($ketemu > 0){
 }
 else{
     echo "<center>Login gagal! username & password tidak benar<br>";
-    echo "<a href=index.php><b>ULANGILAGI</b></a></center>";
+    echo "<a href=login.php><b>ULANGILAGI</b></a></center>";
 }
 mysqli_close($con);
 ?>
