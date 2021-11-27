@@ -22,7 +22,7 @@ $sql2="UPDATE users SET captcha ='$captcha' where email ='$emailUser'";
         }
         else{
             echo "<center>Login gagal! username & password tidak benar<br>";
-            echo "<a href=index.php><b>ULANGILAGI</b></a></center>";
+            echo "<a href=login.php><b>ULANGILAGI</b></a></center>";
         }
         mysqli_close($con);
     }
