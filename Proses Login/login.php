@@ -94,7 +94,7 @@
                 </div> -->
 
                 <!-- <button type="submit" class="btn btn-primary">Login</button> -->
-            </form>
+            
         </div>
     </section>
         <!-- Option 1: Bootstrap Bundle with Popper -->
