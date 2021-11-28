@@ -72,10 +72,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $query=mysqli_query($con, $sql);
     mysqli_close($con);
     header('location:Proses Login/login.php');
-
-    
-    
 }
+    
+    
+
 
 function test_input($data) {
     $data = trim($data);

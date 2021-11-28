@@ -8,6 +8,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+<<<<<<< HEAD
         <?php
 <<<<<<< HEAD
 // define variables and set to empty values
@@ -144,6 +145,11 @@ function test_input($data) {
 >>>>>>> 96f19409bfaff1b3bce4c7f2e440df5707a3082d
         ?>
 >>>>>>> 7d89246e07db82c7839546080af1d0f1f1826b59
+=======
+        <!-- <?php
+            include "check_login.php";
+        ?> -->
+>>>>>>> 378c5ce062f76cdd1eb4d501876405e02e01c221
     </head>
     <body>
     <section class="h-100 w-100" style="box-sizing: border-box; background-color: #232130">
