@@ -8,10 +8,74 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+        <?php
+            
+            // define variables and set to empty values
+            $emailErr = $passErr = $captErr = "";
+            $email = $pass = $capt = "";
+            
+            //Digunakan untuk  memvalidasi semua data supaya data tidak kosong
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (empty($_POST["email_user"]) | empty($_POST["password_user"]) |  (empty($_POST["captcha_code"]))) 
+                {
+                    if (empty($_POST["email_user"])) {   //digunakan untuk mengecek email supaya tidak kosong 
+                        $emailErr = "Email harus diisi";
+                    }else {
+                        $email = test_input($_POST["email_user"]);
+                
+                    // check if e-mail address is well-formed
+                        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                            $emailErr = "Email tidak sesuai format"; 
+                        }
+                    }
+                
+                    if (empty($_POST["password_user"])) {     //mengecek supaya website user tidak kosong
+                        $passErr = "Password tidak boleh kosong";
+                    }else {
+                        $pass = md5($_POST["password_user"]);
+                    }
+            
+                    
+                    if (empty($_POST["captcha_code"])) {      //mengecek supaya gender wajib dipilih salah satu
+                        $captErr = "Harus di isi";
+                    }else {
+                        $capt = md5($_POST["captcha_code"]);
+                    }
+                }
+                include "connection_database.php";
+                $emailUser = $_POST['email_user'];
+                $passwordUser = md5($_POST['password_user']);
+                $capt = md5($_POST['captcha_code']);
+                
+                $sql="SELECT * FROM users WHERE email='$emailUser' AND password='$passwordUser'";
+                $sql2="UPDATE users SET captcha ='$capt' where email ='$emailUser'";
+            
+                $update=mysqli_query($con, $sql2);
+                $login=mysqli_query($con,$sql);
+                $ketemu=mysqli_num_rows($login);
+                $r= mysqli_fetch_array($login);
+                if ($ketemu > 0){
+                    session_start();
+                    $_SESSION['emailUser'] = $emailUser;
+                    $_SESSION['status'] = "login";
+                    echo"USER BERHASIL LOGIN<br>";
+                    header("location:../dashboard.php");
+                }
+                mysqli_close($con);
+            }
+            
+            function test_input($data) {
+                $data = trim($data);
+                $data = stripslashes($data);
+                $data = htmlspecialchars($data);
+                return $data;
+            }
+            
+            
+        ?>
     </head>
     <body>
     <section class="h-100 w-100" style="box-sizing: border-box; background-color: #232130">
-            <form action="check_login.php" method="post">
                 <div class="content-3-6 d-flex flex-column align-items-center h-100 flex-lg-row"
         style="font-family: 'Poppins', sans-serif;">
         <div class="position-relative d-none d-lg-block h-100 width-left">
@@ -29,7 +93,7 @@
             <h3 class="title-text">Log In to continue</h3>
             <p class="caption-text">Please log in using that account has<br>
                 registered on the website.</p>
-            <form style="margin-top: 1.5rem;" action="check_login.php" method="post">
+            <form style="margin-top: 1.5rem;" action="login.php" method="post">
                 <div style="margin-bottom: 1.75rem;">
                 <label for="exampleInputEmail1" class="d-block input-label">Email Address</label>
                 <div class="d-flex w-100 div-input">
@@ -40,8 +104,9 @@
                         fill="#4E4B62" />
                     </svg>
                     <input class="input-field" type="email" name="email_user" id="exampleInputEmail1" placeholder="Your Email Address" autocomplete="on"
-                    required>
+                    >
                 </div>
+                <span class = "text-warning"><?php echo $emailErr;?></span>
                 </div>
                 <div style="margin-top: 1rem;">
                 <label for="password-content-3-6" class="d-block input-label">Password</label>
@@ -53,7 +118,7 @@
                         fill="#4E4B62" />
                     </svg>
                     <input class="input-field" type="password" name="password_user" id="password-content-3-6" placeholder="Your Password"
-                    minlength="6" required>
+                    minlength="6" >
                     <div onclick="togglePassword()">
                     <svg style="margin-left: 0.75rem; cursor:pointer" width="20" height="14" viewBox="0 0 20 14"
                         fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,13 +127,15 @@
                         fill="#4E4B62" />
                     </svg>
                     </div>
+                    <span class = "text-warning"><?php echo $passErr;?></span>
                 </div>
                 <div style="margin-top: 1rem;">
                     <label for="captcha_code" class="d-block input-label">Captcha</label>
                     <div class="d-flex w-100 div-input">
                         <img src="captcha.php" />
-                        <input type="text" class="input-field" name="captcha_code" id="captcha_code" required/>
+                        <input type="text" class="input-field" name="captcha_code" id="captcha_code" />
                     </div>
+                    <span class = "text-warning"><?php echo $captErr;?></span>
                 </div>
                 </div>
                 <div class="d-flex justify-content-end" style="margin-top: 0.75rem;">
