@@ -34,11 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include "connection_database.php";
     $emailUser = $_POST['email_user'];
     $passwordUser = md5($_POST['password_user']);
-    $capt = md5($_POST['captcha_code']);
-    
+    $capt = md5($_POST["captcha_code"]);
     $sql="SELECT * FROM users WHERE email='$emailUser' AND password='$passwordUser'";
-    $sql2="UPDATE users SET captcha ='$captcha' where email ='$emailUser'";
-
+    $sql2="UPDATE users SET captcha ='$capt' where email ='$emailUser'";
+    
     $update=mysqli_query($con, $sql2);
     $login=mysqli_query($con,$sql);
     $ketemu=mysqli_num_rows($login);

@@ -9,12 +9,73 @@
         <link rel="stylesheet" href="../style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
         <?php
-            include "check_login.php";
-        ?>
+// define variables and set to empty values
+$emailErr = $passErr = $captErr = "";
+$email = $pass = $capt = "";
+
+//Digunakan untuk  memvalidasi semua data supaya data tidak kosong
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["email_user"]) | empty($_POST["password_user"]) |  (empty($_POST["captcha_code"]))) 
+    {
+        if (empty($_POST["email_user"])) {   //digunakan untuk mengecek email supaya tidak kosong 
+            $emailErr = "Email harus diisi";
+        }else {
+            $email = test_input($_POST["email_user"]);
+    
+        // check if e-mail address is well-formed
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $emailErr = "Email tidak sesuai format"; 
+            }
+        }
+    
+        if (empty($_POST["password_user"])) {     //mengecek supaya website user tidak kosong
+            $passErr = "Password tidak boleh kosong";
+        }else {
+            $pass = md5($_POST["password_user"]);
+        }
+
+        
+        if (empty($_POST["captcha_code"])) {      //mengecek supaya gender wajib dipilih salah satu
+            $captErr = "Harus di isi";
+        }else {
+            $capt = md5($_POST["captcha_code"]);
+        }
+    }
+    include "connection_database.php";
+    $emailUser = $_POST['email_user'];
+    $passwordUser = md5($_POST['password_user']);
+    $capt = md5($_POST["captcha_code"]);
+    $sql="SELECT * FROM users WHERE email='$emailUser' AND password='$passwordUser'";
+    $sql2="UPDATE users SET captcha ='$capt' where email ='$emailUser'";
+    
+    $update=mysqli_query($con, $sql2);
+    $login=mysqli_query($con,$sql);
+    $ketemu=mysqli_num_rows($login);
+    $r= mysqli_fetch_array($login);
+    if ($ketemu > 0){
+        session_start();
+        $_SESSION['emailUser'] = $emailUser;
+        $_SESSION['status'] = "login";
+        echo"USER BERHASIL LOGIN<br>";
+        header("location:../dashboard.php");
+    }else{
+        echo "<center>Login gagal! username & password tidak benar<br>";
+        echo "<a href=login.php><b>ULANGILAGI</b></a></center>";
+    }
+    mysqli_close($con);
+}
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+?>
     </head>
     <body>
     <section class="h-100 w-100" style="box-sizing: border-box; background-color: #232130">
-            <form action="check_login.php" method="post">
                 <div class="content-3-6 d-flex flex-column align-items-center h-100 flex-lg-row"
         style="font-family: 'Poppins', sans-serif;">
         <div class="position-relative d-none d-lg-block h-100 width-left">
@@ -32,7 +93,7 @@
             <h3 class="title-text">Log In to continue</h3>
             <p class="caption-text">Please log in using that account has<br>
                 registered on the website.</p>
-            <form style="margin-top: 1.5rem;" action="check_login.php" method="post">
+            <form style="margin-top: 1.5rem;" action="login.php" method="post">
                 <div style="margin-bottom: 1.75rem;">
                 <label for="exampleInputEmail1" class="d-block input-label">Email Address</label>
                 <div class="d-flex w-100 div-input">
@@ -80,7 +141,7 @@
                 <div class="d-flex justify-content-end" style="margin-top: 0.75rem;">
                 <a href="forgot-password.php" class="forgot-password fst-italic">Forgot Password?</a>
                 </div>
-                <input type="submit" value="Login" class="btn btn-fill text-white d-block w-100">
+                <input type="submit" value="Login" class="btn btn-fill text-white d-block w-100" name="submit">
             </form>
             <p class="text-center bottom-caption">Don't have an account yet?
                 <span class="green-bottom-caption"><a href="../registration.php" >Register Here</a></span>
