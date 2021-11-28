@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 // define variables and set to empty values
 $namaErr = $userErr = $emailErr = $passErr = $pass2Err = $captErr = "";
 $nama = $user = $email = $pass = $pass2 = $capt = "";
@@ -75,6 +76,15 @@ if ($namaUser == "") {
 }else{
     echo "nama sudah di isi";
 }
+=======
+// include "Proses Login/connection_database.php";
+// $namaUser = $_POST['nama_user'];
+// $usernameUser = $_POST['username_user'];
+// $emailUser = $_POST['email_user'];
+// $passwordUser = md5($_POST['password_user']);
+// $capt = md5($_POST['captcha_code']);
+
+>>>>>>> 4300a74f2cd51e50a466977f893c701db5fdfec6
 // $sql = "INSERT INTO users(username, nama_lengkap, email, password, captcha) VALUES ('$usernameUser', '$namaUser','$emailUser', '$passwordUser', '$capt')";
 // $query=mysqli_query($con, $sql);
 // mysqli_close($con);
