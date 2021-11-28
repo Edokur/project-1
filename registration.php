@@ -72,10 +72,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $query=mysqli_query($con, $sql);
     mysqli_close($con);
     header('location:Proses Login/login.php');
-
-    
-    
 }
+    
+    
+
 
 function test_input($data) {
     $data = trim($data);
@@ -105,7 +105,8 @@ function test_input($data) {
             <h3 class="title-text">Register to continue</h3>
             <p class="caption-text">Please registered on the website.<br>
                 </p>
-            <form style="margin-top: 1.5rem;" action="registration.php" method="post">
+            <form style="margin-top: 1.5rem;" action="<?php 
+    echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <div style="margin-bottom: 1.75rem;">   
                     <label for="exampleInputEmail1" class="d-block input-label">Fullname</label>
                     <div class="d-flex w-100 div-input">
@@ -116,7 +117,7 @@ function test_input($data) {
                             fill="#4E4B62" />
                         </svg>
                         <input class="input-field" type="text" name="nama_user" id="exampleInputEmail1" placeholder="Your Fullname" autocomplete="on"
-                        required>
+                        >
                     </div>
                     <span class = "text-warning"><?php echo $namaErr;?></span>
                 </div>
@@ -130,7 +131,7 @@ function test_input($data) {
                             fill="#4E4B62" />
                         </svg>
                         <input class="input-field" type="text" name="username_user" id="exampleInputEmail1" placeholder="Your Username" autocomplete="on"
-                        required>
+                        >
                     </div>
                     <span class = "text-warning"><?php echo $userErr;?></span>
                 </div>
@@ -144,7 +145,7 @@ function test_input($data) {
                             fill="#4E4B62" />
                         </svg>
                         <input class="input-field" type="email" name="email_user" id="exampleInputEmail1" placeholder="Your Email Address" autocomplete="on"
-                        required>
+                        >
                     </div>
                     <span class = "text-warning"><?php echo $emailErr;?></span>
                 </div>
