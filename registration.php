@@ -16,7 +16,7 @@ $nama = $user = $email = $pass = $pass2 = $capt = "";
 
 //Digunakan untuk  memvalidasi semua data supaya data tidak kosong
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["nama_user"]) | empty($_POST["username_user"]) | empty($_POST["email_user"]) | empty($_POST["password_user"]) | empty($_POST["password_user2"]) | (empty($_POST["captcha_code"]))) 
+    if (empty($_POST["nama_user"]) || empty($_POST["username_user"]) || empty($_POST["email_user"]) || empty($_POST["password_user"]) || empty($_POST["password_user2"]) || (empty($_POST["captcha_code"]))) 
     {
         if (empty($_POST["nama_user"])) {        //digunakan untuk memvalidasi nama supaya tidak kosong
             $namaErr = "Nama harus diisi";
@@ -72,10 +72,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $query=mysqli_query($con, $sql);
     mysqli_close($con);
     header('location:Proses Login/login.php');
-}
-    
-    
 
+    
+    
+}
 
 function test_input($data) {
     $data = trim($data);
