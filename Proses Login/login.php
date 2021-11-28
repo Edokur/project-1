@@ -8,6 +8,9 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+        <?php
+            include "check_login.php";
+        ?>
     </head>
     <body>
     <section class="h-100 w-100" style="box-sizing: border-box; background-color: #232130">
@@ -40,8 +43,9 @@
                         fill="#4E4B62" />
                     </svg>
                     <input class="input-field" type="email" name="email_user" id="exampleInputEmail1" placeholder="Your Email Address" autocomplete="on"
-                    required>
+                    >
                 </div>
+                <span class = "text-warning"><?php echo $emailErr;?></span>
                 </div>
                 <div style="margin-top: 1rem;">
                 <label for="password-content-3-6" class="d-block input-label">Password</label>
@@ -53,7 +57,7 @@
                         fill="#4E4B62" />
                     </svg>
                     <input class="input-field" type="password" name="password_user" id="password-content-3-6" placeholder="Your Password"
-                    minlength="6" required>
+                    minlength="6" >
                     <div onclick="togglePassword()">
                     <svg style="margin-left: 0.75rem; cursor:pointer" width="20" height="14" viewBox="0 0 20 14"
                         fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,13 +66,15 @@
                         fill="#4E4B62" />
                     </svg>
                     </div>
+                    <span class = "text-warning"><?php echo $passErr;?></span>
                 </div>
                 <div style="margin-top: 1rem;">
                     <label for="captcha_code" class="d-block input-label">Captcha</label>
                     <div class="d-flex w-100 div-input">
                         <img src="captcha.php" />
-                        <input type="text" class="input-field" name="captcha_code" id="captcha_code" required/>
+                        <input type="text" class="input-field" name="captcha_code" id="captcha_code" />
                     </div>
+                    <span class = "text-warning"><?php echo $captErr;?></span>
                 </div>
                 </div>
                 <div class="d-flex justify-content-end" style="margin-top: 0.75rem;">
