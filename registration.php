@@ -105,7 +105,8 @@ function test_input($data) {
             <h3 class="title-text">Register to continue</h3>
             <p class="caption-text">Please registered on the website.<br>
                 </p>
-            <form style="margin-top: 1.5rem;" action="" method="post">
+            <form style="margin-top: 1.5rem;" action="<?php 
+    echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <div style="margin-bottom: 1.75rem;">   
                     <label for="exampleInputEmail1" class="d-block input-label">Fullname</label>
                     <div class="d-flex w-100 div-input">
